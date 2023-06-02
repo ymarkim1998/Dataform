@@ -1,0 +1,14 @@
+config {
+    type: 'operations',
+    schema: 'raw',
+    name: 'MP_ext_vendas',
+    hasOutput: true,
+    tags: ['inicial', 'incremental']
+}
+
+
+CREATE OR REPLACE EXTERNAL TABLE ${self()} 
+OPTIONS(
+  format = 'parquet',
+  uris = ['gs://wks_data/Lab_inc/carregamento_adicional/vendas.parquet']
+);
